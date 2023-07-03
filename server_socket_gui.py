@@ -94,6 +94,39 @@ def example_network_setup(num):
         
     return network
 
+def conn_socket():
+    global text
+    global server_socket, client_socket, client_sockets 
+    # 創建 Socket
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    # 綁定地址和端口
+    server_address = ('192.168.14.148', 9005)
+    server_socket.bind(server_address)
+
+    # listen connection
+    clients = 1
+    server_socket.listen(clients)
+    print('WAITING CONNECTION...')
+
+    # 存儲客戶端套接字
+    client_sockets = []  
+    connected_client = 0
+    
+    # 接受樹梅派連接
+    while True:
+        client_socket, client_address = server_socket.accept()
+        print('SUCCESSFULLY CONNECTED:', client_address)
+        client_sockets.append(client_socket)
+        connected_client += 1
+
+        #在連接設備達到目標數量前不跳出迴圈
+        if connected_client >= clients:
+            break
+
+    # default signal
+    text = '1'
+
 n = 20
 rounds = 10
 err = 1
@@ -419,11 +452,33 @@ def update_progress(progress, start_value, end_value):
 #進度條直接跑到100%
 def update_progress_fast(progress):
     progress['value'] = 100
-    root.update()
+    root.update()   
+
+#圖片處理
+def load_and_resize_gif(gif_path, new_size):
+    # 載入原始的GIF圖像
+    gif = imageio.mimread(gif_path)
+
+    # 縮小GIF圖像的每個幀
+    gif_resized = []
+    for frame in gif:
+        frame_resized = Image.fromarray(frame).resize(new_size, Image.LANCZOS)
+        gif_resized.append(frame_resized)
+
+    # 將縮小後的GIF圖像轉換為Tkinter的PhotoImage
+    frames_photo = [ImageTk.PhotoImage(frame) for frame in gif_resized]
+
+    return frames_photo
+
+#更新gif的FPS
+def update_gif_frame(gif_label, frames_photo, index):
+    gif_label.configure(image=frames_photo[index])
+    index = (index + 1) % len(frames_photo)
+    root.after(100, update_gif_frame, gif_label, frames_photo, index)
 
 def run():
     #執行socket的連接
-    conn() 
+    conn_socket() 
 
     # input how many nodes
     num = 3 
@@ -455,62 +510,7 @@ def run():
     for i in range(num):
         protocol[i].start()
 
-    ns.sim_run(500)    
-
-def conn():
-    global text
-    global server_socket, client_socket, client_sockets 
-    # 創建 Socket
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-    # 綁定地址和端口
-    server_address = ('192.168.14.148', 9005)
-    server_socket.bind(server_address)
-
-    # listen connection
-    clients = 1
-    server_socket.listen(clients)
-    print('WAITING CONNECTION...')
-
-    # 存儲客戶端套接字
-    client_sockets = []  
-    connected_client = 0
-    
-    # 接受樹梅派連接
-    while True:
-        client_socket, client_address = server_socket.accept()
-        print('SUCCESSFULLY CONNECTED:', client_address)
-        client_sockets.append(client_socket)
-        connected_client += 1
-
-        #在連接設備達到目標數量前不跳出迴圈
-        if connected_client >= clients:
-            break
-
-    # default signal
-    text = '1'
-
-#圖片處理
-def load_and_resize_gif(gif_path, new_size):
-    # 載入原始的GIF圖像
-    gif = imageio.mimread(gif_path)
-
-    # 縮小GIF圖像的每個幀
-    gif_resized = []
-    for frame in gif:
-        frame_resized = Image.fromarray(frame).resize(new_size, Image.LANCZOS)
-        gif_resized.append(frame_resized)
-
-    # 將縮小後的GIF圖像轉換為Tkinter的PhotoImage
-    frames_photo = [ImageTk.PhotoImage(frame) for frame in gif_resized]
-
-    return frames_photo
-
-#更新gif的FPS
-def update_gif_frame(gif_label, frames_photo, index):
-    gif_label.configure(image=frames_photo[index])
-    index = (index + 1) % len(frames_photo)
-    root.after(100, update_gif_frame, gif_label, frames_photo, index)
+    ns.sim_run(500) 
 
 # init text
 text = '0'
