@@ -523,7 +523,7 @@ root.geometry("800x600")
 
 # Load the image
 image = Image.open("qn.jpg")
-server = Image.open("123.png")
+server = Image.open("user.png")
 
 # Specify the desired size for the background image
 bg_width = 1000

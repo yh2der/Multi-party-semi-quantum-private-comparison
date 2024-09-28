@@ -251,5 +251,4 @@ def run():
         protocol[i].start()
     ns.sim_run(500)
 
-
 run()

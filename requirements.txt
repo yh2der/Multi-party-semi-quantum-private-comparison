@@ -1,0 +1,15 @@
+cysignals==1.11.4
+Cython==3.0.11
+dataclasses==0.8
+imageio==2.9.0
+netsquid==1.1.7
+numpy==1.19.5
+pandas==1.1.5
+Pillow==8.4.0
+pkg-resources==0.0.0
+pydynaa==1.0.2
+python-dateutil==2.9.0.post0
+pytz==2024.2
+reedsolo==2.0.13
+scipy==1.5.4
+six==1.16.0

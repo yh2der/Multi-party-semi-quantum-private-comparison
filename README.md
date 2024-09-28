@@ -6,15 +6,73 @@ This project investigates the Quantum Private Computation (QPC) protocol, which 
 
 ## Installation
 1. Install a virtual machine(I chose [virtual box](https://www.virtualbox.org/wiki/Downloads) here)
-    ![alt text](image.png)
+    ![alt text](README-pics/image.png)
     download `VirtualBox 7.0.20 platform packages` and `rtualBox 7.0.20 Oracle VirtualBox Extension Pack`
 
 2. Download [Ubuntu Desktop](https://ubuntu.com/download)
 
-3. ![alt text](image-1.png)
+3. ![alt text](README-pics/image-1.png)
     - add a virtual machine with ISO of ubuntu
 
-4. 
+4. Update
+```
+sudo apt update
+```
+
+5. Install pip
+```
+sudo apt install python3-pip
+```
+
+6. Confirm
+```
+pip3--version
+```
+
+7. Alias
+```
+alias pip=pip3
+```
+
+8.Create myvenv
+```
+python3 -m venv myvenv
+```
+
+9. Activate
+```
+source myvenv/bin/activate
+```
+
+10. Go to [Netsquid](https://netsquid.org/)
+    a. Register first
+    b. pip3 install --user --extra-index-url https://<username>:<password>@pypi.netsquid.org netsquid (remove --user if you are in virtual enviroment)
+
+11. Run test
+```
+import netsquid as ns
+ns.test()
+```
+
+12. Install reedsolo
+```
+pip install reedsolo
+```
+
+13. Install pillow
+```
+pip install pillow
+```
+
+14. Install tkinter
+```
+pip install tkinter
+```
+
+15. Install imageio
+```
+pip install imageio
+```
 ## Usage
 
 ## Features
