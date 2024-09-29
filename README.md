@@ -11,8 +11,10 @@ This project investigates the Quantum Private Computation (QPC) protocol, which 
 
 2. Download [Ubuntu Desktop](https://ubuntu.com/download)
 
-3. ![alt text](README-pics/image-1.png)
-    - add a virtual machine with ISO of ubuntu
+3. Add a virtual machine with ISO of ubuntu
+    ![alt text](README-pics/image-1.png)
+    
+
 
 4. Update
 ```
@@ -45,8 +47,8 @@ source myvenv/bin/activate
 ```
 
 10. Go to [Netsquid](https://netsquid.org/)
-    a. Register first
-    b. pip3 install --user --extra-index-url https://<username>:<password>@pypi.netsquid.org netsquid (remove --user if you are in virtual enviroment)
+    - Register first
+    - pip3 install --user --extra-index-url https://<username>:<password>@pypi.netsquid.org netsquid (remove --user if you are in virtual enviroment)
 
 11. Run test
 ```
