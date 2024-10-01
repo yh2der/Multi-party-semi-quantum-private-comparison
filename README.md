@@ -36,7 +36,7 @@ pip3--version
 alias pip=pip3
 ```
 
-8.Create myvenv
+8. Create myvenv
 ```
 python3 -m venv myvenv
 ```
