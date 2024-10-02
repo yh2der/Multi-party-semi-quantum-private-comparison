@@ -73,26 +73,21 @@ pip install tkinter
 ```
 pip install imageio
 ```
-## Usage
 
-## Features
+## Methods
+Our research includes the following steps:
 
-## 方法
-
-我們的研究包括以下步驟：
-1. 生成三角形圖狀態。
-2. 參與者選擇CHK或CALC模式，執行相應的操作，並返回ACK消息。
-3. 公開討論選擇的模式，保留有效會話中的測量結果。
-4. 驗證測量結果是否符合三角形圖態的糾纏性質。
-5. 計算私密位序列，並將結果通過經典通道發送給TP。
-6. TP計算最終結果。
+Generate triangle graph states.
+Participants choose CHK or CALC mode, perform corresponding operations, and return ACK messages.
+Publicly discuss the chosen modes, retaining measurement results from valid sessions.
+Verify if the measurement results conform to the entanglement properties of the triangle graph state.
+Calculate the private bit sequence, and send the results to TP via a classical channel.
+TP calculates the final result.
 
 ## 模擬
-
-我們使用Python的Netsquid套件進行模擬，以驗證協議的正確性。樹梅派上使用Python的Tkinter來呈現通信過程，最終顯示使用者訊息的mod 2結果。
+We verifies 
+We use Python's Netsquid package for simulation to verify the correctness of the protocol. On the Raspberry Pi, Python's Tkinter is used to present the communication process, ultimately displaying the mod 2 result of the user's message.
 
 ## Result
 
 The proposed SQPC protocol allows two classical participants to securely compare their private messages with the assistance of a semi-honest TP (Third Party). The protocol is lightweight and practical, with potential applications in multi-party semi-quantum private computation. Our simulations successfully verified the effectiveness of the protocol, although further research and applications are needed for mod 2 results in multi-party scenarios.
-
-本研究提出的SQPC協議允許兩個經典參與者在半不誠實的TP的協助下安全比對其私密消息。協議輕巧實用，並具有潛在的多方半量子私密計算應用。我們在模擬中成功驗證了協議的有效性，但在多方情況下的mod 2結果仍需進一步研究和應用。
